@@ -1,40 +1,40 @@
 import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
-import { ArrowRight, Award, Users, Layers, TrendingUp, CheckCircle2, Star } from "lucide-react";
+import { ArrowRight, Award } from "lucide-react";
 
 const stats = [
   { value: "+95%", label: "increase in ROAS", source: "Neustar" },
   { value: "+36%", label: "average ROI lift", source: "ARF / NCS" },
-  { value: "+83%", label: "better than lookalikes", source: "Simmons" },
-  { value: "48%", label: "of sales effect", source: "ARF Cognition Council" },
+  { value: "+83%", label: "vs. lookalike models", source: "Simmons" },
+  { value: "48%", label: "of total sales effect", source: "ARF Cognition Council" },
 ];
 
 const awards = [
-  { icon: "🏆", title: "2022 Emmy® Award", subtitle: "Engineering, Science & Technology" },
-  { icon: "★", title: "ARF Erwin Ephron Award", subtitle: "First Recipient, 2014" },
-  { icon: "★", title: "Cynopsis MeasureUp", subtitle: "Hall of Fame, 2022" },
-  { icon: "★", title: "Stars of Attribution", subtitle: "Sequent Partners" },
+  { title: "2022 Emmy® Award", sub: "Engineering, Science & Technology" },
+  { title: "ARF Erwin Ephron Award", sub: "First Recipient, 2014" },
+  { title: "Cynopsis MeasureUp", sub: "Hall of Fame, 2022" },
+  { title: "Stars of Attribution", sub: "Sequent Partners" },
 ];
 
 const proofStudies = [
   {
     source: "Neustar",
-    finding: "+95% increase in incremental ROAS",
-    detail: "Random control trial for major retail chain using RMT Semasio Motivational Targets in programmatic digital.",
+    stat: "+95%",
+    label: "increase in ROAS",
+    detail: "Random control trial for major retail chain using RMT Semasio Motivational Targets in programmatic digital — the gold standard measurement methodology.",
     type: "Random Control Trial",
   },
   {
     source: "ARF / NCS",
-    finding: "+36% average ROI lift",
+    stat: "+36%",
+    label: "average ROI lift",
     detail: "Across 15 ads tested when GRPs were allocated to top four deciles of Value Signals Resonance between ad and program.",
-    type: "Case Study",
+    type: "Multi-Study Analysis",
   },
   {
     source: "Simmons",
-    finding: "+83% improvement over lookalikes",
-    detail: "RMT Motivational Targets significantly outperformed the lookalike modeling used in over $60B of annual programmatic spending.",
+    stat: "+83%",
+    label: "vs. lookalike models",
+    detail: "RMT Motivational Targets significantly outperformed lookalike modeling used in over $60B of annual programmatic spending.",
     type: "Comparative Study",
   },
 ];
@@ -43,286 +43,231 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden">
+      <section className="relative min-h-[calc(100vh-4rem)] flex flex-col justify-center overflow-hidden border-b border-border">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: "radial-gradient(circle, hsl(215 80% 28% / 0.07) 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
+            backgroundImage: "radial-gradient(circle at 70% 30%, hsl(163 65% 48% / 0.06) 0%, transparent 60%)",
           }}
         />
         <div
-          className="absolute top-0 right-0 w-2/3 h-full pointer-events-none"
+          className="absolute inset-0 pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse at top right, hsl(215 80% 28% / 0.08) 0%, transparent 65%)",
+            backgroundImage: "linear-gradient(to bottom right, transparent 60%, hsl(163 65% 48% / 0.03) 100%)",
           }}
         />
 
-        <div className="max-w-7xl mx-auto px-6 py-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="flex flex-col gap-6">
-            <div className="flex flex-wrap gap-2">
-              <Badge variant="outline" className="text-xs font-medium gap-1.5 py-1 px-3">
-                <Award className="w-3 h-3" />
-                2022 Emmy® Award Winner
-              </Badge>
-              <Badge variant="outline" className="text-xs font-medium py-1 px-3">
-                ARF Erwin Ephron Award
-              </Badge>
+        <div className="max-w-7xl mx-auto px-6 py-24 w-full">
+          <div className="max-w-4xl">
+            <div className="flex items-center gap-2 mb-8">
+              <Award className="w-4 h-4 text-primary" />
+              <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                2022 Emmy® Award — Engineering, Science & Technology
+              </span>
             </div>
 
-            <div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.08] tracking-tight">
-                Exalt the Ad.
-                <br />
-                <span className="text-primary">Transform</span>
-                <br />
-                Your Results.
-              </h1>
-            </div>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-foreground leading-[0.95] tracking-tight mb-8">
+              Exalt the Ad.
+              <br />
+              <span className="text-primary">Transform</span>
+              <br />
+              Your Results.
+            </h1>
 
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-              RMT's proven methodology matches your ads with the exact audiences and contexts most likely to respond powerfully — guaranteed, or your money back.
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mb-10">
+              RMT matches your ads with the exact audiences and contexts most likely to respond powerfully.
+              Guaranteed by Emmy® Award-winning technology — or your money back.
             </p>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap items-center gap-4">
               <Link href="/results">
-                <Button size="lg" data-testid="button-hero-see-proof">
-                  See the Proof
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
+                <button
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
+                  data-testid="button-hero-see-proof"
+                >
+                  See the Proof <ArrowRight className="w-4 h-4" />
+                </button>
               </Link>
-              <Link href="/contact">
-                <Button size="lg" variant="outline" data-testid="button-hero-talk">
-                  Talk to Us
-                </Button>
+              <Link href="/how-it-works">
+                <button
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-border text-sm font-semibold text-foreground hover:bg-muted/50 transition-colors"
+                  data-testid="button-hero-how"
+                >
+                  How It Works
+                </button>
               </Link>
-            </div>
-
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-              <span>Guarantee: high response results or the equivalent of your money back</span>
             </div>
           </div>
+        </div>
 
-          {/* Stats grid */}
-          <div className="grid grid-cols-2 gap-4">
-            {stats.map((stat) => (
-              <Card
-                key={stat.value}
-                className="p-6 border-card-border bg-card hover-elevate flex flex-col gap-2"
-                data-testid={`stat-card-${stat.value}`}
-              >
-                <span className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
-                  {stat.value}
-                </span>
-                <span className="text-sm font-semibold text-foreground leading-tight">{stat.label}</span>
-                <span className="text-xs text-muted-foreground">{stat.source}</span>
-              </Card>
-            ))}
+        {/* Stats row */}
+        <div className="border-t border-border w-full">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4">
+              {stats.map((stat, i) => (
+                <div
+                  key={stat.value}
+                  className={`py-8 px-6 flex flex-col gap-1 ${i < stats.length - 1 ? "border-r border-border" : ""}`}
+                  data-testid={`stat-card-${stat.value}`}
+                >
+                  <span className="text-3xl lg:text-4xl font-black text-primary tracking-tight">
+                    {stat.value}
+                  </span>
+                  <span className="text-sm font-medium text-foreground">{stat.label}</span>
+                  <span className="text-xs text-muted-foreground">{stat.source}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Awards bar */}
-      <section className="border-y border-border bg-card">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mr-2">
+      {/* Core insight — full bleed dark */}
+      <section className="bg-foreground/5 border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-5">
+                The Core Insight
+              </p>
+              <h2 className="text-3xl sm:text-4xl font-black text-foreground leading-tight mb-6">
+                Context quality is different for each ad.
+              </h2>
+              <p className="text-muted-foreground leading-relaxed text-lg mb-4">
+                The size of the interaction effect between ads and contexts is larger than what the
+                context itself brings to every ad. Most of the industry misses this.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Bill Harvey's foundational 1960s research anticipated this. RMT now proves it — at
+                scale, with third-party validation, and with a money-back guarantee.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-4">
+              <div className="rounded-lg border border-primary/20 bg-primary/5 p-6">
+                <p className="text-sm font-semibold text-primary mb-2">High-Response Audiences</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  People whose motivations and values align with <em>this specific ad</em> — not just
+                  category buyers. +83% better than lookalikes (Simmons).
+                </p>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-6">
+                <p className="text-sm font-semibold text-foreground mb-2">High-Response Contexts</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Program environments that amplify <em>this specific ad</em> using Value Signals™ —
+                  double-digit ROI lift confirmed by NCS.
+                </p>
+              </div>
+              <Link href="/how-it-works">
+                <div className="rounded-lg border border-border bg-card px-5 py-4 flex items-center justify-between group cursor-pointer hover:border-primary/40 transition-colors">
+                  <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+                    Explore the full methodology
+                  </span>
+                  <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Awards */}
+      <section className="border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 py-10">
+          <div className="flex flex-wrap items-center gap-x-12 gap-y-5">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               Recognition
             </p>
             {awards.map((award) => (
-              <div
-                key={award.title}
-                className="flex items-center gap-2"
-                data-testid={`award-${award.title.toLowerCase().replace(/\s+/g, "-")}`}
-              >
-                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500 flex-shrink-0" />
-                <div>
-                  <p className="text-sm font-semibold text-foreground">{award.title}</p>
-                  <p className="text-xs text-muted-foreground">{award.subtitle}</p>
-                </div>
+              <div key={award.title} className="flex flex-col" data-testid={`award-${award.title.toLowerCase().replace(/\s+/g, "-")}`}>
+                <span className="text-sm font-semibold text-foreground">{award.title}</span>
+                <span className="text-xs text-muted-foreground">{award.sub}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Core insight */}
-      <section className="bg-foreground text-background">
-        <div className="max-w-7xl mx-auto px-6 py-20 text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-background/40 mb-6">
-            The Core Insight
-          </p>
-          <blockquote className="text-2xl sm:text-3xl lg:text-4xl font-bold text-background leading-snug max-w-4xl mx-auto mb-6">
-            "The little-known fact that makes all the difference: context quality is{" "}
-            <span className="text-yellow-400">different for each ad</span>."
-          </blockquote>
-          <p className="text-base text-background/60 max-w-2xl mx-auto leading-relaxed">
-            The size of the interaction effect between ads and contexts is larger than what the context itself
-            brings to every ad. This is why RMT scores each ad individually — and why it works.
-          </p>
-        </div>
-      </section>
-
-      {/* Two Pillars */}
-      <section className="max-w-7xl mx-auto px-6 py-20 w-full">
-        <div className="text-center mb-12">
-          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
-            The RMT Approach
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-            Two Ways to Find Your Best Response
-          </h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Most targeting approaches ignore the ad itself. RMT is built around a simple truth: different people and different contexts respond differently to each specific ad.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card className="p-8 border-card-border bg-card hover-elevate flex flex-col gap-5" data-testid="card-audiences">
-            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-              <Users className="w-6 h-6 text-primary" />
-            </div>
+      {/* Proof studies */}
+      <section className="border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 py-20">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
             <div>
-              <h3 className="text-xl font-bold text-foreground mb-2">High-Response Audiences</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                We identify the people whose motivations and values are most aligned with <em>this specific ad</em> — not just category buyers, but individuals psychologically predisposed to respond to it. This goes far beyond traditional lookalike modeling.
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">
+                Third-Party Validation
               </p>
+              <h2 className="text-3xl sm:text-4xl font-black text-foreground">
+                Proven by Independent Research
+              </h2>
             </div>
-            <div className="flex flex-col gap-2 text-sm">
-              <div className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">Motivational alignment scoring per ad</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">Semasio partnership — 300M+ US profiles</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">Available in programmatic digital</span>
-              </div>
-            </div>
-            <Link href="/how-it-works">
-              <Button variant="outline" size="sm" className="w-fit" data-testid="button-learn-audiences">
-                Learn More <ArrowRight className="w-3.5 h-3.5" />
-              </Button>
+            <Link href="/results">
+              <button
+                className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
+                data-testid="button-view-all-results"
+              >
+                View all 6 studies <ArrowRight className="w-4 h-4" />
+              </button>
             </Link>
-          </Card>
-
-          <Card className="p-8 border-card-border bg-card hover-elevate flex flex-col gap-5" data-testid="card-contexts">
-            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-              <Layers className="w-6 h-6 text-primary" />
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-foreground mb-2">High-Response Contexts</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                We find the program environments that most amplify <em>this specific ad</em>, using Value Signals™ to match ad and context for maximum resonance. The right context isn't the same for every ad — it changes with the ad's message.
-              </p>
-            </div>
-            <div className="flex flex-col gap-2 text-sm">
-              <div className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">Value Signals™ scoring system</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">Ad-context resonance beyond genre</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">Validated by NCS, 605, Nielsen</span>
-              </div>
-            </div>
-            <Link href="/how-it-works">
-              <Button variant="outline" size="sm" className="w-fit" data-testid="button-learn-contexts">
-                Learn More <ArrowRight className="w-3.5 h-3.5" />
-              </Button>
-            </Link>
-          </Card>
-        </div>
-      </section>
-
-      {/* Proof Studies teaser */}
-      <section className="bg-card border-y border-border">
-        <div className="max-w-7xl mx-auto px-6 py-20 w-full">
-          <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
-              Third-Party Validation
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-              Proven by Independent Research
-            </h2>
-            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-              Every claim is backed by studies from trusted, objective third-party organizations — not internal marketing.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {proofStudies.map((study) => (
-              <Card
+              <div
                 key={study.source}
-                className="p-6 border-card-border hover-elevate flex flex-col gap-4"
+                className="rounded-lg border border-border bg-card p-7 flex flex-col gap-4 hover:border-border/60 transition-colors"
                 data-testid={`proof-card-${study.source.toLowerCase().replace(/\s+/g, "-")}`}
               >
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                      {study.source}
-                    </span>
-                  </div>
-                  <Badge variant="secondary" className="text-xs flex-shrink-0">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                    {study.source}
+                  </span>
+                  <span className="text-xs px-2 py-0.5 rounded-full border border-border text-muted-foreground">
                     {study.type}
-                  </Badge>
+                  </span>
                 </div>
-                <p className="text-xl font-extrabold text-primary leading-tight">{study.finding}</p>
+                <div>
+                  <span className="text-4xl font-black text-primary">{study.stat}</span>
+                  <p className="text-sm font-medium text-foreground mt-1">{study.label}</p>
+                </div>
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1">{study.detail}</p>
-              </Card>
+              </div>
             ))}
-          </div>
-
-          <div className="text-center">
-            <Link href="/results">
-              <Button variant="outline" data-testid="button-view-all-results">
-                View All 6 Studies <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* Guarantee + CTA */}
+      {/* CTA */}
       <section className="max-w-7xl mx-auto px-6 py-20 w-full">
-        <div className="rounded-xl bg-primary p-10 md:p-16 text-center flex flex-col items-center gap-6">
-          <Award className="w-10 h-10 text-primary-foreground/60" />
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-primary-foreground tracking-tight max-w-2xl leading-snug">
-            We Guarantee High Response Results
-          </h2>
-          <p className="text-primary-foreground/75 text-lg max-w-xl leading-relaxed">
-            We've worked with many companies and consistently delivered high response results. So confident are we in our method that we back every engagement with a makegood guarantee.
-          </p>
-          <div className="flex flex-wrap gap-3 justify-center mt-2">
+        <div className="rounded-xl border border-primary/20 bg-primary/5 p-10 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+          <div className="flex flex-col gap-4 max-w-xl">
+            <div className="flex items-center gap-2">
+              <Award className="w-4 h-4 text-primary" />
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                Guaranteed
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-foreground leading-tight">
+              High response results — or the equivalent of your money back.
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              We've consistently delivered. So confident are we that we back every engagement with a makegood guarantee.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 flex-shrink-0">
             <Link href="/contact">
-              <Button
-                size="lg"
-                variant="secondary"
-                className="font-semibold"
+              <button
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity w-full sm:w-auto"
                 data-testid="button-cta-bottom-talk"
               >
-                Start the Conversation
-                <ArrowRight className="w-4 h-4" />
-              </Button>
+                Start the Conversation <ArrowRight className="w-4 h-4" />
+              </button>
             </Link>
-            <Link href="/results">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+            <Link href="/leadership">
+              <button
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md border border-border text-sm font-medium text-muted-foreground hover:text-foreground hover:border-border/60 transition-colors w-full sm:w-auto"
                 data-testid="button-cta-bottom-proof"
               >
-                See the Evidence
-              </Button>
+                Meet the Team
+              </button>
             </Link>
           </div>
         </div>

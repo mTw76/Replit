@@ -1,75 +1,64 @@
 import { Link } from "wouter";
-import { Mail, Award } from "lucide-react";
+
+const navLinks = [
+  { label: "How It Works", href: "/how-it-works" },
+  { label: "Results", href: "/results" },
+  { label: "Leadership", href: "/leadership" },
+  { label: "Contact", href: "/contact" },
+];
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-background">
-      <div className="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-md bg-background/10 border border-background/20 flex items-center justify-center flex-shrink-0">
-              <span className="text-background font-extrabold text-xs tracking-tight">RMT</span>
-            </div>
-            <div className="flex flex-col leading-tight">
-              <span className="font-bold text-sm text-background/90">Research Measurement</span>
-              <span className="font-bold text-sm text-background/90">Technologies</span>
-            </div>
+    <footer className="border-t border-border bg-card">
+      <div className="max-w-7xl mx-auto px-6 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          <div className="md:col-span-2 flex flex-col gap-4">
+            <span className="text-lg font-black tracking-tight text-foreground">RMT</span>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+              Research Measurement Technologies — Emmy® Award-winning advertising research that
+              guarantees higher response from your ads.
+            </p>
+            <a
+              href="mailto:bharvey@rmt.solutions"
+              className="text-sm text-primary hover:underline transition-colors w-fit"
+              data-testid="link-footer-email"
+            >
+              bharvey@rmt.solutions
+            </a>
           </div>
-          <p className="text-sm text-background/60 leading-relaxed max-w-xs">
-            The only way left to get more positive response from advertising is to exalt the ad.
-          </p>
-          <div className="flex items-center gap-2 text-sm text-background/60">
-            <Award className="w-4 h-4 text-yellow-400 flex-shrink-0" />
-            <span>2022 Emmy® Award Winner</span>
-          </div>
-        </div>
 
-        <div className="flex flex-col gap-4">
-          <p className="text-xs font-semibold uppercase tracking-widest text-background/40">Navigation</p>
-          <nav className="flex flex-col gap-2">
-            {[
-              { label: "Home", href: "/" },
-              { label: "How It Works", href: "/how-it-works" },
-              { label: "Results", href: "/results" },
-              { label: "Leadership", href: "/leadership" },
-              { label: "Contact", href: "/contact" },
-            ].map((link) => (
+          <div className="flex flex-col gap-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              Pages
+            </p>
+            {navLinks.map((link) => (
               <Link key={link.href} href={link.href}>
-                <span className="text-sm text-background/60 hover:text-background cursor-pointer transition-colors">
+                <span className="text-sm text-muted-foreground hover:text-foreground cursor-pointer transition-colors">
                   {link.label}
                 </span>
               </Link>
             ))}
-          </nav>
-        </div>
+          </div>
 
-        <div className="flex flex-col gap-4">
-          <p className="text-xs font-semibold uppercase tracking-widest text-background/40">Get in Touch</p>
           <div className="flex flex-col gap-3">
-            <a
-              href="mailto:bharvey@rmt.solutions"
-              className="flex items-center gap-2 text-sm text-background/60 hover:text-background transition-colors"
-              data-testid="link-footer-email"
-            >
-              <Mail className="w-4 h-4 flex-shrink-0" />
-              bharvey@rmt.solutions
-            </a>
-          </div>
-          <div className="mt-2">
-            <p className="text-xs text-background/40 leading-relaxed">
-              Guaranteed high response results — or the equivalent of your money back.
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              Awards
             </p>
+            <p className="text-sm text-muted-foreground">2022 Emmy® Award</p>
+            <p className="text-xs text-muted-foreground/60 -mt-1">Engineering, Science & Technology</p>
+            <p className="text-sm text-muted-foreground mt-1">ARF Erwin Ephron Award</p>
+            <p className="text-xs text-muted-foreground/60 -mt-1">First Recipient, 2014</p>
+            <p className="text-sm text-muted-foreground mt-1">Cynopsis MeasureUp</p>
+            <p className="text-xs text-muted-foreground/60 -mt-1">Hall of Fame, 2022</p>
           </div>
         </div>
-      </div>
 
-      <div className="border-t border-background/10">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-xs text-background/40">
+        <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Research Measurement Technologies. All rights reserved.
           </p>
-          <p className="text-xs text-background/40">
-            Emmy® is a trademark of the Television Academy.
+          <p className="text-xs text-muted-foreground">
+            Emmy® is a registered trademark of NATAS / ATAS.
           </p>
         </div>
       </div>
