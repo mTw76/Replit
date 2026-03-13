@@ -421,7 +421,7 @@ function About() {
           </div>
           <div>
             <p className="body-text">
-              Acro Capital Group is an alternative investment management firm. Founded on the conviction
+              Acro Capital Group is an alternative investment management firm, founded on the conviction
               that disciplined, process-driven investing can consistently generate superior
               risk-adjusted returns.
             </p>
@@ -533,7 +533,12 @@ function Strategy() {
 function Contact() {
   return (
     <>
-      <section className="page-header">
+      <section
+        className="page-header"
+        style={{
+          background: "linear-gradient(rgba(249,246,240,0.86), rgba(249,246,240,0.86)), url('/about-bg.webp') center/cover no-repeat",
+        }}
+      >
         <h1 className="page-title">Contact</h1>
         <div className="gold-rule" style={{ margin: "0 0 0" }} />
       </section>
