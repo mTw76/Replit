@@ -7,7 +7,6 @@ function Nav() {
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/strategy", label: "Strategy" },
-    { href: "/research", label: "Research" },
     { href: "/contact", label: "Contact" },
   ];
 
@@ -480,52 +479,6 @@ function Strategy() {
   );
 }
 
-function Research() {
-  return (
-    <>
-      <section className="hero" style={{ minHeight: "40vh" }}>
-        <p className="hero-eyebrow">Research and Intelligence</p>
-        <h1 className="hero-title" style={{ fontSize: "clamp(40px, 5vw, 64px)" }}>Research</h1>
-        <div className="gold-rule" />
-      </section>
-
-      <section className="section">
-        <div className="two-col">
-          <div>
-            <p className="section-label">Our Edge</p>
-            <h2 className="section-heading">Insight from data others overlook.</h2>
-          </div>
-          <div>
-            <p className="body-text">
-              The research function is the foundation of every investment. Proprietary infrastructure
-              built around alternative data, quantitative modeling, and fundamental sector expertise.
-            </p>
-            <p className="body-text">
-              Access to research outputs is limited to fund investors and authorized personnel.
-              Acro Capital Group does not publish external research reports or market commentary.
-            </p>
-          </div>
-        </div>
-
-        <div className="principles-grid" style={{ marginTop: "64px" }}>
-          {[
-            ["Alternative Data", "Proprietary datasets spanning transaction data, satellite imagery, web traffic metrics, and sentiment analytics processed daily."],
-            ["Quantitative Modeling", "Systematic factor models, statistical arbitrage frameworks, and machine learning signal generation at scale."],
-            ["Macro Analysis", "Top-down global macro research covering monetary policy, geopolitical dynamics, and cross-asset flow analysis."],
-            ["Sector Intelligence", "Deep-dive quantitative analysis of sector dynamics, supply-demand structures, and price behavior across asset classes."],
-          ].map(([title, desc], i) => (
-            <div className="principle-card" key={i}>
-              <div className="principle-number">0{i + 1}</div>
-              <div className="principle-title">{title}</div>
-              <p className="principle-desc">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-    </>
-  );
-}
-
 function Contact() {
   return (
     <>
@@ -600,7 +553,6 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/strategy" component={Strategy} />
-      <Route path="/research" component={Research} />
       <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
     </Switch>
