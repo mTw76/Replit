@@ -325,9 +325,10 @@ function Strategy() {
           </div>
           <div>
             <p className="body-text">
-              Acro Capital Group employs quantitative and fundamental methodologies across multiple
-              alternative investment strategies. Rigorous, data-driven analysis and systematic
-              risk management at every layer of the portfolio.
+              Acro Capital Group applies a quantitatively driven methodology across multiple
+              alternative investment strategies, supplemented by fundamental analysis where it
+              adds edge. Rigorous, data-driven analysis and systematic risk management at every
+              layer of the portfolio.
             </p>
             <p className="body-text">
               We do not rely on a single strategy or market regime. A diversified set of uncorrelated
