@@ -146,8 +146,8 @@ a {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-  padding: 80px 64px;
+  justify-content: flex-start;
+  padding: max(48px, 13vh) 64px 80px;
 }
 
 .hero-image {

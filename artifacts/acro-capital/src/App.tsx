@@ -267,24 +267,42 @@ function Footer() {
               <a href="mailto:info@acrocapitalgroup.com" style={{ color: "#6B6560", textDecoration: "none" }}>info@acrocapitalgroup.com</a>
             </div>
           </div>
-          <div>
-            <div style={{ fontSize: "10px", fontWeight: 400, letterSpacing: "0.18em", textTransform: "uppercase", color: "#B8960C", marginBottom: "16px" }}>
-              Quarterly Perspectives
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+            <div style={{ fontSize: "10px", fontWeight: 400, letterSpacing: "0.18em", textTransform: "uppercase", color: "#B8960C", marginBottom: "12px" }}>
+              Private Introductions
             </div>
             <p style={{ fontSize: "13px", fontWeight: 300, color: "#6B6560", lineHeight: "1.7", marginBottom: "20px" }}>
-              Market insights and investment commentary, delivered selectively.
+              Acro Capital Group operates on a referral basis. All client relationships are held in strict confidence.
             </p>
-            <NewsletterForm variant="footer" />
+            <Link
+              href="/contact"
+              style={{
+                display: "inline-block",
+                border: "1px solid #B8960C",
+                color: "#B8960C",
+                padding: "11px 24px",
+                fontSize: "11px",
+                fontFamily: "Inter, sans-serif",
+                fontWeight: 400,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+                alignSelf: "flex-start",
+              }}
+            >
+              Get in Touch
+            </Link>
           </div>
         </div>
         <div className="footer-rule" />
         <p className="footer-legal">
+          Acro Capital Group is a trading name of Acro Capital, LLC, a Delaware limited liability company.
           This website is for informational purposes only and does not constitute an offer to sell or
           a solicitation of an offer to buy any security or investment product. Past performance is not
           indicative of future results. <strong style={{ color: "#4D4844" }}>acrocapitalgroup.com</strong> is
-          the only official website of Acro Capital Group LLC.
+          the only official website of Acro Capital Group.
           <br /><br />
-          &copy; {new Date().getFullYear()} Acro Capital Group LLC. All rights reserved.
+          &copy; {new Date().getFullYear()} Acro Capital Group. All rights reserved.
         </p>
       </div>
     </footer>
@@ -302,7 +320,7 @@ function Home() {
           <p className="hero-tagline">Precision &nbsp;·&nbsp; Process &nbsp;·&nbsp; Performance</p>
         </div>
         <div className="hero-image">
-          <img src="/gold-dore.png" alt="Gold doré bars — physical gold delivery" />
+          <img src="/gold-dore.webp" alt="Gold doré bars — physical gold delivery" />
         </div>
       </section>
 
@@ -347,15 +365,32 @@ function Home() {
       <section className="section" style={{ borderBottom: "none" }}>
         <div className="two-col">
           <div>
-            <p className="section-label">Quarterly Perspectives</p>
-            <h2 className="section-heading">Market insights, delivered selectively.</h2>
+            <p className="section-label">Private Access</p>
+            <h2 className="section-heading">Discreet by design.</h2>
             <p className="body-text" style={{ marginTop: "16px" }}>
-              Subscribe to receive quarterly investment commentary and market analysis
-              from the Acro Capital Group research team.
+              Acro Capital Group works exclusively through direct introduction. All
+              client relationships are confidential. If you have been referred or
+              wish to begin a conversation, reach out privately.
             </p>
           </div>
-          <div style={{ paddingTop: "8px" }}>
-            <NewsletterForm variant="section" />
+          <div style={{ display: "flex", alignItems: "flex-start", paddingTop: "32px" }}>
+            <Link
+              href="/contact"
+              style={{
+                display: "inline-block",
+                border: "1px solid #B8960C",
+                color: "#B8960C",
+                padding: "14px 32px",
+                fontSize: "11px",
+                fontFamily: "Inter, sans-serif",
+                fontWeight: 400,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+              }}
+            >
+              Request a Private Introduction
+            </Link>
           </div>
         </div>
       </section>
@@ -369,7 +404,7 @@ function About() {
       <section
         className="page-header"
         style={{
-          background: "linear-gradient(rgba(249,246,240,0.86), rgba(249,246,240,0.86)), url('/about-bg.png') center/cover no-repeat",
+          background: "linear-gradient(rgba(249,246,240,0.86), rgba(249,246,240,0.86)), url('/about-bg.webp') center/cover no-repeat",
         }}
       >
         <p className="hero-eyebrow">Our Firm</p>
@@ -430,7 +465,7 @@ function Strategy() {
       <section
         className="page-header"
         style={{
-          background: "linear-gradient(rgba(249,246,240,0.86), rgba(249,246,240,0.86)), url('/strategy-bg.png') center/cover no-repeat",
+          background: "linear-gradient(rgba(249,246,240,0.86), rgba(249,246,240,0.86)), url('/strategy-bg.webp') center/cover no-repeat",
         }}
       >
         <p className="hero-eyebrow">Investment Approach</p>
