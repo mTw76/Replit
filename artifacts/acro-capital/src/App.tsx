@@ -203,8 +203,8 @@ function Home() {
           </div>
           <div>
             <p className="body-text">
-              Acro Capital Group is a precision-driven investment management firm. Empirical
-              research and real-time market intelligence guide every strategy.
+              We are a precision-driven investment management firm that integrates empirical
+              research with real-time market intelligence to guide our strategies.
             </p>
             <p className="body-text">
               Every investment decision is anchored in a disciplined, repeatable process.
