@@ -122,13 +122,13 @@ a {
 
 /* ─── HERO ─────────────────────────────────────────────────────────────── */
 .hero {
-  min-height: calc(100vh - 64px);
+  min-height: calc(80vh - 64px);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding: 80px 48px;
+  padding: 64px 48px;
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -146,8 +146,8 @@ a {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
-  padding: max(48px, 13vh) 64px 80px;
+  justify-content: center;
+  padding: 64px 64px 64px;
 }
 
 .hero-image {
@@ -252,7 +252,7 @@ a {
 .section {
   max-width: 960px;
   margin: 0 auto;
-  padding: 96px 48px;
+  padding: 72px 48px;
   border-bottom: 1px solid var(--border-light);
 }
 
