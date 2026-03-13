@@ -256,7 +256,7 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-inner">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", marginBottom: "48px" }}>
+        <div className="footer-grid">
           <div>
             <div className="footer-brand">Acro Capital Group</div>
             <div className="footer-sub">Investment Management</div>
