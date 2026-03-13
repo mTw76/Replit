@@ -465,7 +465,7 @@ function Strategy() {
       <section
         className="page-header"
         style={{
-          background: "linear-gradient(rgba(249,246,240,0.86), rgba(249,246,240,0.86)), url('/strategy-bg.webp') center/cover no-repeat",
+          background: "linear-gradient(rgba(249,246,240,0.94), rgba(249,246,240,0.94)), url('/strategy-bg.webp') center/cover no-repeat",
         }}
       >
         <p className="hero-eyebrow">Investment Approach</p>
@@ -533,7 +533,6 @@ function Contact() {
   return (
     <>
       <section className="page-header">
-        <p className="hero-eyebrow">Get in Touch</p>
         <h1 className="page-title">Contact</h1>
         <div className="gold-rule" style={{ margin: "0 0 0" }} />
       </section>
@@ -541,7 +540,7 @@ function Contact() {
       <section className="section">
         <div className="two-col">
           <div>
-            <p className="section-label">Get in Touch</p>
+            <p className="section-label">Private Inquiries</p>
             <h2 className="section-heading">Let's Talk</h2>
             <p className="body-text">
               Whether you have a specific question or just want to learn more about
@@ -553,7 +552,7 @@ function Contact() {
             <div style={{ marginBottom: "40px" }}>
               <div className="contact-label">Headquarters</div>
               <div className="contact-details">
-                Acro Capital, LLC<br />
+                Acro Capital Group<br />
                 Wilmington, Delaware<br />
                 <a href="tel:+13024164474">302 416 4474 (USA)</a><br />
                 <a href="mailto:info@acrocapitalgroup.com">info@acrocapitalgroup.com</a>
