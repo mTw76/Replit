@@ -496,11 +496,11 @@ function Contact() {
       <section className="section">
         <div className="two-col">
           <div>
-            <p className="section-label">Send a Message</p>
-            <h2 className="section-heading">Request Information</h2>
+            <p className="section-label">Get in Touch</p>
+            <h2 className="section-heading">Let's Talk</h2>
             <p className="body-text">
-              Use the form below to reach our team. We respond to all qualifying
-              inquiries within two business days.
+              Whether you have a specific question or just want to learn more about
+              what we do, send us a note. We typically respond within two business days.
             </p>
             <ContactForm />
           </div>

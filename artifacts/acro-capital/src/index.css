@@ -156,6 +156,17 @@ a {
   min-height: 400px;
 }
 
+.hero-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: 0;
+  width: 120px;
+  background: linear-gradient(to right, var(--cream) 0%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
 .hero-image img {
   position: absolute;
   inset: 0;
@@ -163,6 +174,10 @@ a {
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.hero-split .hero-title {
+  font-size: clamp(36px, 4vw, 52px);
 }
 
 /* Compact inner-page header */
