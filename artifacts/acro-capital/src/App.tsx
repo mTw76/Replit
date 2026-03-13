@@ -326,9 +326,8 @@ function Strategy() {
           <div>
             <p className="body-text">
               Acro Capital Group applies a quantitatively driven methodology across multiple
-              alternative investment strategies, supplemented by fundamental analysis where it
-              adds edge. Rigorous, data-driven analysis and systematic risk management at every
-              layer of the portfolio.
+              alternative investment strategies. Rigorous, data-driven analysis and systematic
+              risk management at every layer of the portfolio.
             </p>
             <p className="body-text">
               We do not rely on a single strategy or market regime. A diversified set of uncorrelated
@@ -406,7 +405,7 @@ function Research() {
             ["Alternative Data", "Proprietary datasets spanning transaction data, satellite imagery, web traffic metrics, and sentiment analytics processed daily."],
             ["Quantitative Modeling", "Systematic factor models, statistical arbitrage frameworks, and machine learning signal generation at scale."],
             ["Macro Analysis", "Top-down global macro research covering monetary policy, geopolitical dynamics, and cross-asset flow analysis."],
-            ["Fundamental Research", "Deep-dive company and sector analysis conducted by analysts with specialized domain expertise."],
+            ["Sector Intelligence", "Deep-dive quantitative analysis of sector dynamics, supply-demand structures, and price behavior across asset classes."],
           ].map(([title, desc], i) => (
             <div className="principle-card" key={i}>
               <div className="principle-number">0{i + 1}</div>
