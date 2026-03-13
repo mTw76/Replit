@@ -544,8 +544,8 @@ function Contact() {
             <p className="section-label">Private Inquiries</p>
             <h2 className="section-heading">A Private Introduction</h2>
             <p className="body-text">
-              Whether you have a specific question or just want to learn more about
-              what we do, send us a note. We typically respond within two business days.
+              All relationships begin with a personal introduction. If you have been
+              referred to our firm, we welcome your correspondence.
             </p>
             <ContactForm />
           </div>
