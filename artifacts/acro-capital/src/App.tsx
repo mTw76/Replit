@@ -542,7 +542,7 @@ function Contact() {
         <div className="two-col">
           <div>
             <p className="section-label">Private Inquiries</p>
-            <h2 className="section-heading">Make an Enquiry</h2>
+            <h2 className="section-heading">A Private Introduction</h2>
             <p className="body-text">
               Whether you have a specific question or just want to learn more about
               what we do, send us a note. We typically respond within two business days.
