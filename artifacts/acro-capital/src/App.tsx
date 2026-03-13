@@ -345,8 +345,9 @@ function Strategy() {
             <ul className="focus-list">
               {[
                 "Global equities and equity derivatives",
-                "Fixed income and credit",
                 "Macro and currency strategies",
+                "Commodities and futures markets",
+                "Precious metals, including physical gold delivery",
                 "Volatility and structured products",
                 "Event-driven and special situations",
               ].map((item) => (

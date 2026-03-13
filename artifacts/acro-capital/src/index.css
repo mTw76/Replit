@@ -312,10 +312,9 @@ a {
 }
 
 .focus-list li::before {
-  content: '';
-  width: 16px;
-  height: 1px;
-  background: var(--gold);
+  content: '•';
+  color: var(--gold);
+  font-size: 16px;
   flex-shrink: 0;
 }
 
