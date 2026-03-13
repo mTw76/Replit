@@ -238,6 +238,16 @@ a {
   color: var(--warm-gray);
 }
 
+.hero-secondary {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--warm-gray);
+  line-height: 1.7;
+  margin-top: 48px;
+  max-width: 380px;
+}
+
 /* ─── SECTIONS ─────────────────────────────────────────────────────────── */
 .section {
   max-width: 960px;

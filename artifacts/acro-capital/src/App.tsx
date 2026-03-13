@@ -318,6 +318,7 @@ function Home() {
           <h1 className="hero-title">Precision-Driven<br />Investment Management</h1>
           <div className="gold-rule" style={{ margin: "0 0 28px" }} />
           <p className="hero-tagline">Precision &nbsp;·&nbsp; Process &nbsp;·&nbsp; Performance</p>
+          <p className="hero-secondary">We manage capital for a select group of global investors.</p>
         </div>
         <div className="hero-image">
           <img src="/gold-dore.webp" alt="Gold doré bars — physical gold delivery" />
@@ -541,7 +542,7 @@ function Contact() {
         <div className="two-col">
           <div>
             <p className="section-label">Private Inquiries</p>
-            <h2 className="section-heading">Let's Talk</h2>
+            <h2 className="section-heading">Make an Enquiry</h2>
             <p className="body-text">
               Whether you have a specific question or just want to learn more about
               what we do, send us a note. We typically respond within two business days.
