@@ -490,6 +490,11 @@ function Strategy() {
               We do not rely on a single strategy or market regime. A diversified set of uncorrelated
               return streams, each independently validated.
             </p>
+            <p className="body-text">
+              Each strategy is developed through independent research and tested across multiple market
+              environments before capital is committed. Position sizing is determined by contribution
+              to the portfolio's risk budget, not by return expectation alone.
+            </p>
           </div>
         </div>
       </section>
@@ -498,7 +503,7 @@ function Strategy() {
         <div className="two-col">
           <div>
             <p className="section-label">Focus Areas</p>
-            <h2 className="section-heading">Where we deploy capital</h2>
+            <h2 className="section-heading">Where we deploy capital.</h2>
             <ul className="focus-list">
               {[
                 "Global equities and equity derivatives",
@@ -522,6 +527,30 @@ function Strategy() {
             <p className="body-text">
               Drawdown limits, correlation monitoring, liquidity constraints, and stress testing are
               applied continuously and updated in response to changing market conditions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="two-col">
+          <div>
+            <p className="section-label">Portfolio Objectives</p>
+            <h2 className="section-heading">Built for long-term capital preservation.</h2>
+          </div>
+          <div>
+            <p className="body-text">
+              The portfolio is designed to generate consistent, risk-adjusted returns across market
+              cycles. Absolute return targets are set conservatively relative to the strategies
+              deployed.
+            </p>
+            <p className="body-text">
+              Capital preservation is the primary objective at the portfolio level. Return generation
+              is a function of discipline and process, not leverage or concentration.
+            </p>
+            <p className="body-text">
+              The firm manages capital on behalf of a select group of investors with patient, long-term
+              mandates. Liquidity terms and return profiles are agreed individually with each client.
             </p>
           </div>
         </div>
