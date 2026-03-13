@@ -366,7 +366,12 @@ function Home() {
 function About() {
   return (
     <>
-      <section className="page-header">
+      <section
+        className="page-header"
+        style={{
+          background: "linear-gradient(rgba(249,246,240,0.86), rgba(249,246,240,0.86)), url('/about-bg.png') center/cover no-repeat",
+        }}
+      >
         <p className="hero-eyebrow">Our Firm</p>
         <h1 className="page-title">About</h1>
         <div className="gold-rule" style={{ margin: "0 0 0" }} />
@@ -422,7 +427,12 @@ function About() {
 function Strategy() {
   return (
     <>
-      <section className="page-header">
+      <section
+        className="page-header"
+        style={{
+          background: "linear-gradient(rgba(249,246,240,0.86), rgba(249,246,240,0.86)), url('/strategy-bg.png') center/cover no-repeat",
+        }}
+      >
         <p className="hero-eyebrow">Investment Approach</p>
         <h1 className="page-title">Strategy</h1>
         <div className="gold-rule" style={{ margin: "0 0 0" }} />
