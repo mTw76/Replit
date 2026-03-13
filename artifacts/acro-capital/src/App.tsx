@@ -1,4 +1,5 @@
 import { Switch, Route, Router as WouterRouter, Link, useLocation } from "wouter";
+import { useState } from "react";
 
 function Nav() {
   const [location] = useLocation();
@@ -7,7 +8,6 @@ function Nav() {
     { href: "/about", label: "About" },
     { href: "/strategy", label: "Strategy" },
     { href: "/research", label: "Research" },
-    { href: "/careers", label: "Careers" },
     { href: "/contact", label: "Contact" },
   ];
 
@@ -27,22 +27,160 @@ function Nav() {
   );
 }
 
+function NewsletterForm({ variant = "section" }: { variant?: "section" | "footer" }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "duplicate" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim() || !email.trim()) return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: name.trim(), email: email.trim() }),
+      });
+      if (res.status === 201) setStatus("success");
+      else if (res.status === 409) setStatus("duplicate");
+      else setStatus("error");
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  if (status === "success") {
+    return (
+      <p style={{ fontSize: "13px", color: "#B8960C", letterSpacing: "0.06em" }}>
+        Thank you. You will receive our next quarterly perspectives.
+      </p>
+    );
+  }
+
+  if (status === "duplicate") {
+    return (
+      <p style={{ fontSize: "13px", color: "#9B9590", letterSpacing: "0.04em" }}>
+        That address is already on our list.
+      </p>
+    );
+  }
+
+  const isFooter = variant === "footer";
+
+  return (
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "10px", maxWidth: isFooter ? "360px" : "420px" }}>
+      <input
+        type="text"
+        placeholder="Full name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        required
+        style={{
+          background: isFooter ? "#2D2926" : "#F0EBE1",
+          border: "1px solid",
+          borderColor: isFooter ? "#3D3833" : "#E2DDD5",
+          color: isFooter ? "#E2DDD5" : "#1C1917",
+          padding: "11px 14px",
+          fontSize: "13px",
+          fontFamily: "Inter, sans-serif",
+          fontWeight: 300,
+          outline: "none",
+          width: "100%",
+        }}
+      />
+      <input
+        type="email"
+        placeholder="Email address"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        style={{
+          background: isFooter ? "#2D2926" : "#F0EBE1",
+          border: "1px solid",
+          borderColor: isFooter ? "#3D3833" : "#E2DDD5",
+          color: isFooter ? "#E2DDD5" : "#1C1917",
+          padding: "11px 14px",
+          fontSize: "13px",
+          fontFamily: "Inter, sans-serif",
+          fontWeight: 300,
+          outline: "none",
+          width: "100%",
+        }}
+      />
+      <button
+        type="submit"
+        disabled={status === "loading"}
+        style={{
+          background: "transparent",
+          border: "1px solid #B8960C",
+          color: "#B8960C",
+          padding: "11px 24px",
+          fontSize: "11px",
+          fontFamily: "Inter, sans-serif",
+          fontWeight: 400,
+          letterSpacing: "0.14em",
+          textTransform: "uppercase",
+          cursor: "pointer",
+          transition: "background 0.2s, color 0.2s",
+          alignSelf: "flex-start",
+        }}
+        onMouseEnter={(e) => {
+          (e.currentTarget as HTMLButtonElement).style.background = "#B8960C";
+          (e.currentTarget as HTMLButtonElement).style.color = "#F9F6F0";
+        }}
+        onMouseLeave={(e) => {
+          (e.currentTarget as HTMLButtonElement).style.background = "transparent";
+          (e.currentTarget as HTMLButtonElement).style.color = "#B8960C";
+        }}
+      >
+        {status === "loading" ? "Submitting..." : "Subscribe"}
+      </button>
+      {status === "error" && (
+        <p style={{ fontSize: "12px", color: "#9B9590" }}>Something went wrong. Please try again.</p>
+      )}
+      <p style={{ fontSize: "11px", color: isFooter ? "#4D4844" : "#9B9590", letterSpacing: "0.04em" }}>
+        No spam. Unsubscribe at any time.
+      </p>
+    </form>
+  );
+}
+
 function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-inner">
-        <div className="footer-brand">Acro Capital Group</div>
-        <div className="footer-sub">Investment Management</div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", marginBottom: "48px" }}>
+          <div>
+            <div className="footer-brand">Acro Capital Group</div>
+            <div className="footer-sub">Investment Management</div>
+            <div style={{ fontSize: "13px", fontWeight: 300, color: "#6B6560", lineHeight: "2.0", marginTop: "16px" }}>
+              Acro Capital, LLC<br />
+              Wilmington, Delaware<br />
+              <a href="tel:+13024164474" style={{ color: "#6B6560", textDecoration: "none" }}>302 416 4474 (USA)</a><br />
+              <a href="mailto:info@acrocapitalgroup.com" style={{ color: "#6B6560", textDecoration: "none" }}>info@acrocapitalgroup.com</a>
+            </div>
+          </div>
+          <div>
+            <div style={{ fontSize: "10px", fontWeight: 400, letterSpacing: "0.18em", textTransform: "uppercase", color: "#B8960C", marginBottom: "16px" }}>
+              Quarterly Perspectives
+            </div>
+            <p style={{ fontSize: "13px", fontWeight: 300, color: "#6B6560", lineHeight: "1.7", marginBottom: "20px" }}>
+              Market insights and investment commentary, delivered selectively.
+            </p>
+            <NewsletterForm variant="footer" />
+          </div>
+        </div>
         <div className="footer-rule" />
         <p className="footer-legal">
           Acro Capital Group LLC is registered as an investment adviser with the Securities and Exchange
           Commission. Registration does not imply a certain level of skill or training. This website is
           for informational purposes only and does not constitute an offer to sell or a solicitation of
           an offer to buy any security or investment product. Past performance is not indicative of future
-          results. Please note that <strong style={{ color: "#6B6560" }}>acrocapitalgroup.com</strong> is
-          the only official website of Acro Capital Group LLC.
+          results. <strong style={{ color: "#4D4844" }}>acrocapitalgroup.com</strong> is the only official
+          website of Acro Capital Group LLC.
           <br /><br />
-          © {new Date().getFullYear()} Acro Capital Group LLC. All rights reserved.
+          &copy; {new Date().getFullYear()} Acro Capital Group LLC. All rights reserved.
         </p>
       </div>
     </footer>
@@ -63,18 +201,16 @@ function Home() {
         <div className="two-col">
           <div>
             <p className="section-label">Our Firm</p>
-            <h2 className="section-heading">Where <em>empirical rigor</em> meets conviction</h2>
+            <h2 className="section-heading">Empirical rigor.<br />Consistent results.</h2>
           </div>
           <div>
             <p className="body-text">
-              Acro Capital Group is a precision-driven investment management firm that integrates
-              empirical research with real-time market intelligence to guide its alternative
-              investment strategies.
+              Acro Capital Group is a precision-driven investment management firm. Empirical
+              research and real-time market intelligence guide every strategy.
             </p>
             <p className="body-text">
-              Every investment decision is anchored in a disciplined, repeatable process —
-              driven by data, shaped by experience, and executed with conviction. We transform
-              complexity into competitive advantage for our investors.
+              Every investment decision is anchored in a disciplined, repeatable process.
+              Data-driven. Experience-shaped. Executed with conviction.
             </p>
           </div>
         </div>
@@ -98,6 +234,22 @@ function Home() {
           ))}
         </div>
       </section>
+
+      <section className="section" style={{ borderBottom: "none" }}>
+        <div className="two-col">
+          <div>
+            <p className="section-label">Quarterly Perspectives</p>
+            <h2 className="section-heading">Market insights, delivered selectively.</h2>
+            <p className="body-text" style={{ marginTop: "16px" }}>
+              Subscribe to receive quarterly investment commentary and market analysis
+              from the Acro Capital Group research team.
+            </p>
+          </div>
+          <div style={{ paddingTop: "8px" }}>
+            <NewsletterForm variant="section" />
+          </div>
+        </div>
+      </section>
     </>
   );
 }
@@ -106,7 +258,7 @@ function About() {
   return (
     <>
       <section className="hero" style={{ minHeight: "40vh" }}>
-        <p className="hero-eyebrow">Our Story</p>
+        <p className="hero-eyebrow">Our Firm</p>
         <h1 className="hero-title" style={{ fontSize: "clamp(40px, 5vw, 64px)" }}>About Acro Capital Group</h1>
         <div className="gold-rule" />
       </section>
@@ -115,24 +267,22 @@ function About() {
         <div className="two-col">
           <div>
             <p className="section-label">Who We Are</p>
-            <h2 className="section-heading">A culture of <em>intellectual rigor</em></h2>
+            <h2 className="section-heading">Disciplined.<br />Systematic.<br />Results-oriented.</h2>
           </div>
           <div>
             <p className="body-text">
-              Founded on the conviction that disciplined, process-driven investing can consistently
-              generate superior risk-adjusted returns, Acro Capital Group brings together professionals
-              with deep expertise across quantitative research, portfolio management, and financial
-              engineering.
+              Acro Capital Group is an alternative investment management firm. Founded on the conviction
+              that disciplined, process-driven investing can consistently generate superior
+              risk-adjusted returns.
             </p>
             <p className="body-text">
-              We believe that outperformance begins with precision. This rigor extends beyond
-              analysis — it defines how we engage volatility, evaluate opportunity, and execute
-              with conviction in uncertain markets.
+              Our professionals bring deep expertise across quantitative research, portfolio management,
+              and financial engineering. Every strategy is independently validated and collectively
+              resilient.
             </p>
             <p className="body-text">
-              Our process is dynamic yet grounded, adapting to shifting conditions without
-              compromising structural integrity. It is this approach that allows us to transform
-              complexity into competitive advantage.
+              We adapt to shifting market conditions without compromising structural integrity. Complexity
+              becomes competitive advantage.
             </p>
           </div>
         </div>
@@ -143,10 +293,10 @@ function About() {
         <h2 className="section-heading">What guides us</h2>
         <div className="principles-grid">
           {[
-            ["Transparency", "We operate with full transparency to our investors. Clear communication and honest reporting are non-negotiable."],
-            ["Independence", "Our research and portfolio decisions are made free from external bias, guided solely by data and disciplined analysis."],
-            ["Long-term Thinking", "We invest with a multi-cycle perspective. Short-term volatility is an opportunity, not a threat, to those with patience."],
-            ["Accountability", "Every decision is documented, reviewed, and owned. We hold ourselves to the highest standards of professional conduct."],
+            ["Transparency", "Clear communication and honest reporting to our investors. Non-negotiable."],
+            ["Independence", "Research and portfolio decisions made free from external bias. Data and disciplined analysis only."],
+            ["Long-term Thinking", "A multi-cycle investment perspective. Volatility is an opportunity for those with patience."],
+            ["Accountability", "Every decision is documented, reviewed, and owned. Held to the highest standards of professional conduct."],
           ].map(([title, desc], i) => (
             <div className="principle-card" key={i}>
               <div className="principle-number">0{i + 1}</div>
@@ -173,18 +323,17 @@ function Strategy() {
         <div className="two-col">
           <div>
             <p className="section-label">Our Approach</p>
-            <h2 className="section-heading">Systematic <em>conviction</em> at every level</h2>
+            <h2 className="section-heading">Systematic conviction at every level.</h2>
           </div>
           <div>
             <p className="body-text">
               Acro Capital Group employs quantitative and fundamental methodologies across multiple
-              alternative investment strategies. Our approach is rooted in rigorous, data-driven
-              analysis and systematic risk management at every layer of the portfolio.
+              alternative investment strategies. Rigorous, data-driven analysis and systematic
+              risk management at every layer of the portfolio.
             </p>
             <p className="body-text">
-              We do not rely on a single strategy or market regime. Instead, we maintain a
-              diversified set of uncorrelated return streams — each independently validated,
-              collectively resilient.
+              We do not rely on a single strategy or market regime. A diversified set of uncorrelated
+              return streams, each independently validated.
             </p>
           </div>
         </div>
@@ -209,15 +358,14 @@ function Strategy() {
           </div>
           <div>
             <p className="section-label">Risk Framework</p>
-            <h2 className="section-heading">Protecting capital <em>first</em></h2>
+            <h2 className="section-heading">Protecting capital first.</h2>
             <p className="body-text">
-              Risk management is not a separate function at Acro Capital Group — it is embedded
-              in every stage of our investment process. We employ a multi-layered risk framework
-              encompassing position-level, strategy-level, and portfolio-level controls.
+              Risk management is embedded in every stage of the investment process. A multi-layered
+              framework encompassing position-level, strategy-level, and portfolio-level controls.
             </p>
             <p className="body-text">
-              Drawdown limits, correlation monitoring, liquidity constraints, and stress testing
-              are applied continuously and updated in response to changing market dynamics.
+              Drawdown limits, correlation monitoring, liquidity constraints, and stress testing are
+              applied continuously and updated in response to changing market conditions.
             </p>
           </div>
         </div>
@@ -230,7 +378,7 @@ function Research() {
   return (
     <>
       <section className="hero" style={{ minHeight: "40vh" }}>
-        <p className="hero-eyebrow">Research & Intelligence</p>
+        <p className="hero-eyebrow">Research and Intelligence</p>
         <h1 className="hero-title" style={{ fontSize: "clamp(40px, 5vw, 64px)" }}>Research</h1>
         <div className="gold-rule" />
       </section>
@@ -239,13 +387,12 @@ function Research() {
         <div className="two-col">
           <div>
             <p className="section-label">Our Edge</p>
-            <h2 className="section-heading">Insight derived from <em>data others overlook</em></h2>
+            <h2 className="section-heading">Insight from data others overlook.</h2>
           </div>
           <div>
             <p className="body-text">
-              Our research function is the foundation of every investment we make. We maintain a
-              proprietary research infrastructure built around alternative data, quantitative
-              modeling, and fundamental sector expertise.
+              The research function is the foundation of every investment. Proprietary infrastructure
+              built around alternative data, quantitative modeling, and fundamental sector expertise.
             </p>
             <p className="body-text">
               Access to research outputs is limited to fund investors and authorized personnel.
@@ -273,72 +420,6 @@ function Research() {
   );
 }
 
-function Careers() {
-  return (
-    <>
-      <section className="hero" style={{ minHeight: "40vh" }}>
-        <p className="hero-eyebrow">Join Our Team</p>
-        <h1 className="hero-title" style={{ fontSize: "clamp(40px, 5vw, 64px)" }}>Careers</h1>
-        <div className="gold-rule" />
-      </section>
-
-      <section className="section">
-        <div className="two-col">
-          <div>
-            <p className="section-label">Our Culture</p>
-            <h2 className="section-heading">Built for those who demand <em>excellence</em></h2>
-          </div>
-          <div>
-            <p className="body-text">
-              Acro Capital Group seeks exceptional individuals with deep expertise in quantitative
-              research, portfolio management, technology, and operations. We maintain a culture
-              defined by intellectual rigor, collaborative inquiry, and a commitment to excellence.
-            </p>
-            <p className="body-text">
-              We value diverse perspectives and unconventional backgrounds. Our team includes
-              professionals with experience spanning finance, mathematics, computer science,
-              physics, and engineering.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <p className="section-label">Open Roles</p>
-        <h2 className="section-heading">Current opportunities</h2>
-        <table className="careers-table">
-          <tbody>
-            {[
-              ["Quantitative Researcher", "New York", "Full-time"],
-              ["Portfolio Analyst", "New York", "Full-time"],
-              ["Senior Software Engineer — Infrastructure", "New York", "Full-time"],
-              ["Risk Manager", "New York", "Full-time"],
-              ["Data Scientist — Alternative Data", "New York", "Full-time"],
-            ].map(([role, loc, type], i) => (
-              <tr key={i}>
-                <td>{role}</td>
-                <td style={{ color: "#9B9590", fontSize: "13px" }}>{loc}</td>
-                <td>{type}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <div className="notice" style={{ marginTop: "48px" }}>
-          <p>
-            Qualified candidates may submit a curriculum vitae and cover letter to{" "}
-            <a href="mailto:careers@acrocapitalgroup.com" style={{ color: "#B8960C" }}>
-              careers@acrocapitalgroup.com
-            </a>
-            . We review all applications but respond only to candidates selected for further
-            consideration. Acro Capital Group does not accept unsolicited agency submissions.
-          </p>
-        </div>
-      </section>
-    </>
-  );
-}
-
 function Contact() {
   return (
     <>
@@ -353,27 +434,22 @@ function Contact() {
           <div>
             <div className="contact-label">Headquarters</div>
             <div className="contact-details">
-              Acro Capital Group LLC<br />
-              299 Park Avenue<br />
-              New York, New York 10171<br />
-              <a href="tel:+12125550100">212 555 0100</a>
-            </div>
-          </div>
-          <div>
-            <div className="contact-label">Investor Relations</div>
-            <div className="contact-details">
-              For inquiries related to existing investor accounts or fund information:<br />
-              <a href="mailto:ir@acrocapitalgroup.com">ir@acrocapitalgroup.com</a>
+              Acro Capital, LLC<br />
+              Wilmington, Delaware<br />
+              <a href="tel:+13024164474">302 416 4474 (USA)</a>
             </div>
           </div>
           <div>
             <div className="contact-label">General Inquiries</div>
             <div className="contact-details">
               <a href="mailto:info@acrocapitalgroup.com">info@acrocapitalgroup.com</a>
-              <br /><br />
-              <span style={{ color: "#9B9590", fontSize: "13px" }}>
-                Media inquiries are only accepted from authorized press contacts.
-              </span>
+            </div>
+          </div>
+          <div>
+            <div className="contact-label">Investor Relations</div>
+            <div className="contact-details">
+              For inquiries related to existing investor accounts or fund information, contact us
+              at the address above.
             </div>
           </div>
         </div>
@@ -381,9 +457,9 @@ function Contact() {
         <div className="notice" style={{ marginTop: "64px" }}>
           <p>
             Acro Capital Group LLC is registered as an investment adviser with the Securities and
-            Exchange Commission. Please note that <strong>acrocapitalgroup.com</strong> is the
-            only official website of Acro Capital Group LLC. We do not solicit investments via
-            email, social media, or third-party platforms.
+            Exchange Commission. <strong>acrocapitalgroup.com</strong> is the only official website
+            of Acro Capital Group LLC. We do not solicit investments via email, social media, or
+            third-party platforms.
           </p>
         </div>
       </section>
@@ -397,7 +473,7 @@ function NotFound() {
       <p className="section-label">404</p>
       <h2 className="section-heading">Page not found</h2>
       <p className="body-text">
-        <Link href="/" style={{ color: "#B8960C" }}>Return to home →</Link>
+        <Link href="/" style={{ color: "#B8960C" }}>Return to home</Link>
       </p>
     </section>
   );
@@ -410,7 +486,6 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/strategy" component={Strategy} />
       <Route path="/research" component={Research} />
-      <Route path="/careers" component={Careers} />
       <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
     </Switch>
