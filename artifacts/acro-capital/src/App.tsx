@@ -536,7 +536,7 @@ function Contact() {
       <section
         className="page-header"
         style={{
-          background: "linear-gradient(rgba(249,246,240,0.86), rgba(249,246,240,0.86)), url('/about-bg.webp') center/cover no-repeat",
+          background: "linear-gradient(rgba(249,246,240,0.86), rgba(249,246,240,0.86)), url('/contact-bg.webp') center/cover no-repeat",
         }}
       >
         <h1 className="page-title">Contact</h1>
