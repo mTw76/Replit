@@ -27,6 +27,113 @@ function Nav() {
   );
 }
 
+function ContactForm() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.status === 201) setStatus("success");
+      else setStatus("error");
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  const inputStyle: React.CSSProperties = {
+    background: "#F0EBE1",
+    border: "1px solid #E2DDD5",
+    color: "#1C1917",
+    padding: "12px 14px",
+    fontSize: "14px",
+    fontFamily: "Inter, sans-serif",
+    fontWeight: 300,
+    outline: "none",
+    width: "100%",
+  };
+
+  if (status === "success") {
+    return (
+      <div style={{ padding: "32px 0" }}>
+        <p style={{ fontSize: "14px", color: "#B8960C", letterSpacing: "0.04em" }}>
+          Your message has been received. We will be in touch shortly.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "12px", maxWidth: "560px", marginTop: "40px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+        <input
+          type="text"
+          placeholder="Full name"
+          value={form.name}
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
+          required
+          style={inputStyle}
+        />
+        <input
+          type="email"
+          placeholder="Email address"
+          value={form.email}
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          required
+          style={inputStyle}
+        />
+      </div>
+      <textarea
+        placeholder="How can we help you?"
+        value={form.message}
+        onChange={(e) => setForm({ ...form, message: e.target.value })}
+        required
+        rows={5}
+        style={{ ...inputStyle, resize: "vertical" }}
+      />
+      <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+        <button
+          type="submit"
+          disabled={status === "loading"}
+          style={{
+            background: "transparent",
+            border: "1px solid #B8960C",
+            color: "#B8960C",
+            padding: "12px 28px",
+            fontSize: "11px",
+            fontFamily: "Inter, sans-serif",
+            fontWeight: 400,
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            cursor: "pointer",
+            transition: "background 0.2s, color 0.2s",
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLButtonElement).style.background = "#B8960C";
+            (e.currentTarget as HTMLButtonElement).style.color = "#F9F6F0";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLButtonElement).style.background = "transparent";
+            (e.currentTarget as HTMLButtonElement).style.color = "#B8960C";
+          }}
+        >
+          {status === "loading" ? "Sending..." : "Send Message"}
+        </button>
+        {status === "error" && (
+          <p style={{ fontSize: "12px", color: "#9B9590" }}>Something went wrong. Please try again.</p>
+        )}
+      </div>
+    </form>
+  );
+}
+
 function NewsletterForm({ variant = "section" }: { variant?: "section" | "footer" }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -451,6 +558,16 @@ function Contact() {
               at the address above.
             </div>
           </div>
+        </div>
+
+        <div style={{ marginTop: "64px", borderTop: "1px solid var(--border-light)", paddingTop: "56px" }}>
+          <p className="section-label">Send a Message</p>
+          <h2 className="section-heading">Request Information</h2>
+          <p className="body-text">
+            Use the form below to reach our team. We respond to all qualifying inquiries
+            within two business days.
+          </p>
+          <ContactForm />
         </div>
 
         <div className="notice" style={{ marginTop: "64px" }}>

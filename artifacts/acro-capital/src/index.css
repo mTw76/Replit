@@ -49,8 +49,8 @@ a {
   z-index: 100;
   background: var(--cream);
   border-bottom: 1px solid var(--border-light);
-  padding: 20px 48px;
-  height: auto;
+  padding: 0 48px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -58,10 +58,10 @@ a {
 
 .nav-brand {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(52px, 7vw, 88px);
+  font-size: clamp(22px, 2.5vw, 30px);
   font-weight: 700;
-  letter-spacing: -0.01em;
-  line-height: 1.08;
+  letter-spacing: 0.01em;
+  line-height: 1;
   color: var(--gold);
 }
 
@@ -117,12 +117,12 @@ a {
 
 /* ─── PAGE SHELL ───────────────────────────────────────────────────────── */
 .page-wrapper {
-  padding-top: clamp(92px, calc(7vw + 40px), 128px);
+  padding-top: 64px;
 }
 
 /* ─── HERO ─────────────────────────────────────────────────────────────── */
 .hero {
-  min-height: calc(100vh - clamp(92px, calc(7vw + 40px), 128px));
+  min-height: calc(100vh - 64px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,18 +133,18 @@ a {
 }
 
 .hero-eyebrow {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(32px, 4vw, 46px);
-  font-weight: 300;
-  letter-spacing: 0em;
-  text-transform: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(32px, 4vw, 46px);
+  font-size: clamp(48px, 6vw, 72px);
   font-weight: 300;
   line-height: 1.08;
   letter-spacing: -0.01em;
