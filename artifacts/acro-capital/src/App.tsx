@@ -294,11 +294,16 @@ function Footer() {
 function Home() {
   return (
     <>
-      <section className="hero">
-        <p className="hero-eyebrow">Alternative Investment Management</p>
-        <h1 className="hero-title">Precision-Driven<br />Investment Management</h1>
-        <div className="gold-rule" />
-        <p className="hero-tagline">Precision &nbsp;·&nbsp; Process &nbsp;·&nbsp; Performance</p>
+      <section className="hero hero-split">
+        <div className="hero-content">
+          <p className="hero-eyebrow">Alternative Investment Management</p>
+          <h1 className="hero-title">Precision-Driven<br />Investment Management</h1>
+          <div className="gold-rule" style={{ margin: "0 0 28px" }} />
+          <p className="hero-tagline">Precision &nbsp;·&nbsp; Process &nbsp;·&nbsp; Performance</p>
+        </div>
+        <div className="hero-image">
+          <img src="/gold-dore.png" alt="Gold doré bars — physical gold delivery" />
+        </div>
       </section>
 
       <section className="section">
@@ -361,10 +366,10 @@ function Home() {
 function About() {
   return (
     <>
-      <section className="hero" style={{ minHeight: "40vh" }}>
+      <section className="page-header">
         <p className="hero-eyebrow">Our Firm</p>
-        <h1 className="hero-title" style={{ fontSize: "clamp(40px, 5vw, 64px)" }}>About Acro Capital Group</h1>
-        <div className="gold-rule" />
+        <h1 className="page-title">About</h1>
+        <div className="gold-rule" style={{ margin: "0 0 0" }} />
       </section>
 
       <section className="section">
@@ -417,10 +422,10 @@ function About() {
 function Strategy() {
   return (
     <>
-      <section className="hero" style={{ minHeight: "40vh" }}>
+      <section className="page-header">
         <p className="hero-eyebrow">Investment Approach</p>
-        <h1 className="hero-title" style={{ fontSize: "clamp(40px, 5vw, 64px)" }}>Strategy</h1>
-        <div className="gold-rule" />
+        <h1 className="page-title">Strategy</h1>
+        <div className="gold-rule" style={{ margin: "0 0 0" }} />
       </section>
 
       <section className="section">
@@ -482,45 +487,42 @@ function Strategy() {
 function Contact() {
   return (
     <>
-      <section className="hero" style={{ minHeight: "40vh" }}>
+      <section className="page-header">
         <p className="hero-eyebrow">Get in Touch</p>
-        <h1 className="hero-title" style={{ fontSize: "clamp(40px, 5vw, 64px)" }}>Contact</h1>
-        <div className="gold-rule" />
+        <h1 className="page-title">Contact</h1>
+        <div className="gold-rule" style={{ margin: "0 0 0" }} />
       </section>
 
       <section className="section">
-        <div className="contact-grid">
+        <div className="two-col">
           <div>
-            <div className="contact-label">Headquarters</div>
-            <div className="contact-details">
-              Acro Capital, LLC<br />
-              Wilmington, Delaware<br />
-              <a href="tel:+13024164474">302 416 4474 (USA)</a>
+            <p className="section-label">Send a Message</p>
+            <h2 className="section-heading">Request Information</h2>
+            <p className="body-text">
+              Use the form below to reach our team. We respond to all qualifying
+              inquiries within two business days.
+            </p>
+            <ContactForm />
+          </div>
+          <div style={{ paddingTop: "8px" }}>
+            <div style={{ marginBottom: "40px" }}>
+              <div className="contact-label">Headquarters</div>
+              <div className="contact-details">
+                Acro Capital, LLC<br />
+                Wilmington, Delaware<br />
+                <a href="tel:+13024164474">302 416 4474 (USA)</a><br />
+                <a href="mailto:info@acrocapitalgroup.com">info@acrocapitalgroup.com</a>
+              </div>
+            </div>
+            <div>
+              <div className="contact-label">Investor Relations</div>
+              <div className="contact-details">
+                For inquiries related to existing investor accounts or fund
+                information, reach us by email or phone above. All investor
+                communications are handled directly by our team.
+              </div>
             </div>
           </div>
-          <div>
-            <div className="contact-label">General Inquiries</div>
-            <div className="contact-details">
-              <a href="mailto:info@acrocapitalgroup.com">info@acrocapitalgroup.com</a>
-            </div>
-          </div>
-          <div>
-            <div className="contact-label">Investor Relations</div>
-            <div className="contact-details">
-              For inquiries related to existing investor accounts or fund information, contact us
-              at the address above.
-            </div>
-          </div>
-        </div>
-
-        <div style={{ marginTop: "64px", borderTop: "1px solid var(--border-light)", paddingTop: "56px" }}>
-          <p className="section-label">Send a Message</p>
-          <h2 className="section-heading">Request Information</h2>
-          <p className="body-text">
-            Use the form below to reach our team. We respond to all qualifying inquiries
-            within two business days.
-          </p>
-          <ContactForm />
         </div>
 
         <div className="notice" style={{ marginTop: "64px" }}>
