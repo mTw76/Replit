@@ -173,12 +173,10 @@ function Footer() {
         </div>
         <div className="footer-rule" />
         <p className="footer-legal">
-          Acro Capital Group LLC is registered as an investment adviser with the Securities and Exchange
-          Commission. Registration does not imply a certain level of skill or training. This website is
-          for informational purposes only and does not constitute an offer to sell or a solicitation of
-          an offer to buy any security or investment product. Past performance is not indicative of future
-          results. <strong style={{ color: "#4D4844" }}>acrocapitalgroup.com</strong> is the only official
-          website of Acro Capital Group LLC.
+          This website is for informational purposes only and does not constitute an offer to sell or
+          a solicitation of an offer to buy any security or investment product. Past performance is not
+          indicative of future results. <strong style={{ color: "#4D4844" }}>acrocapitalgroup.com</strong> is
+          the only official website of Acro Capital Group LLC.
           <br /><br />
           &copy; {new Date().getFullYear()} Acro Capital Group LLC. All rights reserved.
         </p>
@@ -456,10 +454,9 @@ function Contact() {
 
         <div className="notice" style={{ marginTop: "64px" }}>
           <p>
-            Acro Capital Group LLC is registered as an investment adviser with the Securities and
-            Exchange Commission. <strong>acrocapitalgroup.com</strong> is the only official website
-            of Acro Capital Group LLC. We do not solicit investments via email, social media, or
-            third-party platforms.
+            <strong>acrocapitalgroup.com</strong> is the only official website of Acro Capital
+            Group LLC. We do not solicit investments via email, social media, or third-party
+            platforms.
           </p>
         </div>
       </section>
